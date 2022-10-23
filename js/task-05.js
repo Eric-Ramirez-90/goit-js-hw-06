@@ -3,4 +3,12 @@ const refs = {
   span: document.querySelector('#name-output'),
 };
 
-const inputAction
+refs.input.addEventListener('input', onInputChange);
+
+function onInputChange(event) {
+  if (event.currentTarget.value.trim()) {
+    refs.span.textContent = event.currentTarget.value;
+    return;
+  }
+  refs.span.textContent = 'Anonymous';
+}
