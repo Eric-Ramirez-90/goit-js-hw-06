@@ -12,7 +12,7 @@ const refs = {
 
 refs.inputField.addEventListener('input', onInputChange);
 refs.buttonCreate.addEventListener('click', onbuttonCreateClick);
-refs.buttonCreate.addEventListener('click', onbuttonDestroyClick);
+refs.buttonDestroy.addEventListener('click', onbuttonDestroyClick);
 
 let inputValue = 0;
 let changeBoxSizeCounter = 0;
@@ -42,4 +42,6 @@ function createBoxes(amount) {
   }
 }
 
-function onbuttonDestroyClick() {}
+function onbuttonDestroyClick() {
+  refs.divContainer.innerHTML = '';
+}
