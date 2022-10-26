@@ -10,32 +10,36 @@ const refs = {
   divContainer: document.querySelector('#boxes'),
 };
 
-let inputValue = 0;
-
 refs.inputField.addEventListener('input', onInputChange);
-// refs.buttonCreate.addEventListener('click', onbuttonCreateClick);
-// refs.buttonCreate.addEventListener('click', onbuttonDestroyClick);
+refs.buttonCreate.addEventListener('click', onbuttonCreateClick);
+refs.buttonCreate.addEventListener('click', onbuttonDestroyClick);
 
-function onInputChange() {
-  inputValue = Number(refs.inputField.value);
-  console.log(inputValue);
-  createBoxes();
+let inputValue = 0;
+let changeBoxSizeCounter = 0;
+
+function onInputChange(event) {
+  inputValue = event.currentTarget.value;
+}
+const allSreatedBoxes = refs.divContainer.children;
+function onbuttonCreateClick(event) {
+  event = createBoxes();
+
+  console.log(allSreatedBoxes);
 }
 
-// function onbuttonCreateClick() {
-
-// }
-
-// function onbuttonDestroyClick() {}
-
-const arr = [];
 function createBoxes(amount) {
   amount = inputValue;
 
-  for (let i = 0; i <= amount; i += 1) {
-    const markup = `<div class="box-style"></div>`;
-    arr.push(markup);
+  for (let i = 0; i < amount; i += 1) {
+    const boxStarSize = 30 + changeBoxSizeCounter;
+    changeBoxSizeCounter += 10;
+    const createBox = document.createElement('div');
+    createBox.style.backgroundColor = getRandomHexColor();
+    createBox.classList.add('box-style');
+    createBox.style.width = `${boxStarSize}px`;
+    createBox.style.height = `${boxStarSize}px`;
+    refs.divContainer.appendChild(createBox);
   }
-  refs.divContainer.insertAdjacentHTML('beforeend', arr.join(''));
-  console.log(arr);
 }
+
+function onbuttonDestroyClick() {}

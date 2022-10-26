@@ -36,5 +36,5 @@ button {
 .box-style {
   width: 30px;
   height: 30px;
-  outline: 1px solid red;
+  border: 1px solid black;
 }
